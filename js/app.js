@@ -47,7 +47,6 @@ const SITE = "https://iggifernandes.github.io/";
 const REGISTER = [
   { name: "Site Induction", status: "live", repo: "EcoOils-Project-Site-Induction-Sei-Mangkei" },
   { name: "HSSE Tracker", status: "live", repo: "EcoOils-Project-HSSE-tracker" },
-  { name: "IMS incident register", status: "live", repo: "EcoOils-Project-IMS", note: "hsseOnly" },
   { name: "Blood Pressure Monitoring", status: "live", repo: "EcoOils-Project-blood-pressure-monitoring" },
   { name: "Drug & Alcohol Test Record", status: "live", repo: "EcoOils-Project-drug---alcohol-test-record" },
   { name: "HSSE Database", status: "live", repo: "EcoOils-project-hsse-database" }, /* lowercase 'project' is correct */
