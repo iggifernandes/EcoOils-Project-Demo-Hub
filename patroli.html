@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Patroli – EcoOils Demo Hub</title>
+<meta name="theme-color" content="#1b1b1d">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/patroli.css">
+</head>
+<body>
+<div class="ribbon" id="ribbon">DEMO – sample data</div>
+<header class="top">
+  <a class="back" href="index.html" data-k="back">← Demo Hub</a>
+  <div class="right">
+    <div class="ver" id="ver">v1.3</div>
+    <div class="lang" role="group" aria-label="Language"><button data-l="en">EN</button><button data-l="id">ID</button><button data-l="ms">MS</button></div>
+  </div>
+</header>
+
+<main class="pwrap">
+  <div class="ptitle"><h1>Patroli</h1><span class="demobadge">DEMO</span><span class="up" id="roundNo" style="font-size:.8rem"></span></div>
+  <div class="tabs" role="tablist">
+    <button role="tab" data-tab="pGuard" aria-selected="true" data-k="guard">Guard</button>
+    <button role="tab" data-tab="pSup" aria-selected="false" data-k="sup">Supervisor</button>
+  </div>
+
+  <section class="panel on" id="pGuard">
+    <div class="pcard">
+      <h2 data-k="progress">Round progress</h2>
+      <div class="progress"><div class="prog"><i id="pbar"></i></div><b id="pnum">0 / 6</b></div>
+      <div class="nexthint" id="nexthint"></div>
+    </div>
+    <div class="pcard">
+      <h2 data-k="tapHint">Tap a checkpoint to simulate a QR scan</h2>
+      <div class="cps" id="cps"></div>
+      <div class="actions">
+        <span id="bCamWrap"><button class="btn yellow" id="bCam" data-k="cam">Scan with camera</button></span>
+        <button class="btn ghost" id="bEnd" data-k="end">End round</button>
+        <button class="btn" id="bNew" data-k="newRound" hidden>Start new round</button>
+        <button class="btn red" id="bReset" data-k="reset">Reset demo</button>
+        <a class="btn ghost" href="patroli-qr.html" data-k="qr">Print QR codes</a>
+      </div>
+      <div class="cam" id="cam"><video id="video" playsinline muted></video><p id="camMsg"></p><button class="btn ghost" id="bStop" data-k="stopCam">Stop camera</button></div>
+    </div>
+  </section>
+
+  <section class="panel" id="pSup">
+    <div class="kpis" id="kpis"></div>
+    <div class="sup">
+      <div>
+        <div class="pcard map"><h2 data-k="map">Plant schematic (sample)</h2><div id="map"></div></div>
+        <div class="pcard"><h2 data-k="prev">Earlier rounds (sample)</h2><div class="hist" id="hist"></div></div>
+      </div>
+      <div class="pcard"><h2 data-k="timeline">Scan timeline</h2><ul class="tl" id="tl"></ul></div>
+    </div>
+  </section>
+</main>
+<div class="toast" id="toast" role="status"></div>
+<script src="js/i18n.js"></script>
+<script src="js/patroli.js"></script>
+</body>
+</html>
