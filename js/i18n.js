@@ -13,9 +13,9 @@ const UI = {
   site: ["Sei Mangkei", "Sei Mangkei", "Sei Mangkei"],
   heroTitle: ["Safety, <b>digital</b> and in your hands", "Keselamatan, <b>digital</b> dan di tangan Anda", "Keselamatan, <b>digital</b> dan di tangan anda"],
   heroText: [
-    "Try our digital HSSE processes in 10 minutes. Open an app, or take a guided tour. Tours use sample data only.",
-    "Coba proses HSSE digital kami dalam 10 menit. Buka aplikasi, atau ikuti tur terpandu. Tur hanya memakai data contoh.",
-    "Cuba proses HSSE digital kami dalam 10 minit. Buka aplikasi, atau ikuti lawatan berpandu. Lawatan hanya guna data sampel."],
+    "Try our digital HSSE processes in 10 minutes. Tap Try the demo, or take a guided tour. Everything here is sample data.",
+    "Coba proses HSSE digital kami dalam 10 menit. Sentuh Coba demo, atau ikuti tur terpandu. Semua di sini adalah data contoh.",
+    "Cuba proses HSSE digital kami dalam 10 minit. Sentuh Cuba demo, atau ikuti lawatan berpandu. Semua di sini adalah data sampel."],
   statHours: ["Work hours (sample)", "Jam kerja (contoh)", "Jam kerja (sampel)"],
   statApps: ["Digital HSSE processes", "Proses HSSE digital", "Proses HSSE digital"],
   statPaper: ["Paper forms needed", "Formulir kertas", "Borang kertas diperlukan"],

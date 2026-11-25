@@ -1,5 +1,11 @@
 /* EcoOils Demo Hub - front door: tiles, language, tours, idle/attract mode. */
-const VERSION = "v1.3";
+const VERSION = "v1.5";
+/* STAFF mode: live-app links are hidden by default so visitors only reach sample-data demos.
+   Open index.html?staff=1 once on a device to show them (e.g. for Iggy); ?staff=0 hides them again. */
+const _q = new URLSearchParams(location.search).get("staff");
+if (_q === "1") localStorage.setItem("demohub.staff", "1"); if (_q === "0") localStorage.removeItem("demohub.staff");
+const STAFF = localStorage.getItem("demohub.staff") === "1";
+const DEMOS = ["uauc", "gate", "walk", "track", "driver"]; /* apps with an interactive sample-data demo (demo.html) */
 
 /* Live app URLs: pattern https://iggifernandes.github.io/EcoOils-Project-<repo>/ . The apps open on Iggy's own login.
    Edit here only; this is the one place URLs live. */
@@ -80,13 +86,13 @@ function render() {
   const p = I18N.pick.bind(I18N), t = I18N.t.bind(I18N);
   document.documentElement.lang = I18N.lang;
   $("#ribbon").textContent = t("ribbon");
-  $("#ver").textContent = VERSION;
+  $("#ver").textContent = VERSION + (STAFF ? " · STAFF" : "");
   document.querySelectorAll("[data-i]").forEach(el => el.innerHTML = t(el.dataset.i));
   document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.l === I18N.lang));
   $("#apps").innerHTML = APPS.map(a => `<article class="tile">
     <div class="ico">${svgIco(a.id)}</div><h3>${esc(p(a.name))}</h3><p>${esc(p(a.purpose))}</p>
-    <div class="btns"><button class="btn" data-tour="${a.id}">${t("tour")}</button>
-    <a class="btn ghost" href="${URLS[a.id]}" target="_blank" rel="noopener">${t("open")}</a></div></article>`).join("");
+    <div class="btns">${DEMOS.includes(a.id) ? `<a class="btn yellow" href="demo.html?app=${a.id}">${t("tryDemo")}</a><button class="btn ghost" data-tour="${a.id}">${t("tour")}</button>` : `<button class="btn" data-tour="${a.id}">${t("tour")}</button>`}
+    ${STAFF ? `<a class="btn ghost" href="${URLS[a.id]}" target="_blank" rel="noopener">${t("open")}</a>` : ""}</div></article>`).join("");
   const reg = REGISTER.filter(d => d.show !== false);
   const groups = { live: [], testing: [], soon: [] };
   reg.forEach(d => groups[d.status].push(d));
@@ -95,7 +101,7 @@ function render() {
     `<div class="sumbar" aria-hidden="true">${["live", "testing", "soon"].map(k => `<i class="s-${k}" style="width:${groups[k].length / total * 100}%"></i>`).join("")}</div>`;
   const row = d => {
     const url = d.repo ? SITE + d.repo + "/" : null;
-    const link = d.status === "soon" ? "" : url ? `<a class="dl" href="${url}" target="_blank" rel="noopener">${t("open")}</a>` : `<span class="dl soonlink">${t("linkSoon")}</span>`;
+    const link = d.status === "soon" || !STAFF ? "" : url ? `<a class="dl" href="${url}" target="_blank" rel="noopener">${t("open")}</a>` : `<span class="dl soonlink">${t("linkSoon")}</span>`;
     const demo = d.demo ? `<a class="dl demolink" href="patroli.html">${t("tryDemo")} <i>${t("demoTag")}</i></a>` : "";
     return `<li><span class="dn">${esc(d.name)}</span>${d.note ? `<span class="note">${t(d.note)}</span>` : ""}<span class="chip s-${d.status}">${t("st_" + d.status)}</span>${link}${demo}</li>`;
   };

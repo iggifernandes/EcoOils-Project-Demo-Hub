@@ -1,5 +1,5 @@
 /* Patroli demo: guard view + supervisor dashboard. State lives in localStorage only. All data is sample data. */
-const PV = "v1.3";
+const PV = "v1.5";
 const KEY = "patroli.state.v1";
 const IDLE_MS = 60000;
 const CPS = [ // fictional plant layout; x,y are positions on the schematic (viewBox 600x360)

@@ -1,6 +1,6 @@
 # EcoOils Demo Hub
 
-Booth demo (v1.3) for the 2 Dec 2026 visit: a launcher for the digital HSSE processes (each app opens on Iggy's own login), with a take-a-tour fallback using mock screens, and a working **Patroli demo** (optional mini-tour of the live Security Patrol). Plain HTML/CSS/JS, no backend, no API, no tracking, no passwords. **All data is fictional sample data.**
+Booth demo (v1.5) for the 2 Dec 2026 visit: a launcher for the digital HSSE processes (each app opens on Iggy's own login), with a take-a-tour fallback using mock screens, and a working **Patroli demo** (optional mini-tour of the live Security Patrol). Plain HTML/CSS/JS, no backend, no API, no tracking, no passwords. **All data is fictional sample data.**
 
 ## Publish it (steps for Iggy)
 1. On GitHub create a new **public** repo named `EcoOils-Project-Demo-Hub` (empty, no README).
@@ -10,6 +10,11 @@ Booth demo (v1.3) for the 2 Dec 2026 visit: a launcher for the digital HSSE proc
 5. Open it once online on each booth device; it then works offline.
 
 Locally: run `python3 -m http.server` in this folder and browse to http://localhost:8000/ (the service worker and camera need https or localhost).
+
+## v1.5: interactive sample-data demos (no login, no real data)
+* `demo.html?app=uauc|gate|driver|track|walk` (`js/demos.js`, `css/demos.css`): UA/UC report, Material Gate Pass (request, HSSE approve, QR, gate scan), Driver's pre-use checklist and trip log, HSSE Tracker dashboard, Walkthrough before/after close-out and pictorial report. Each takes about 1 minute.
+* Reset: **Reset demo** button, or automatic after 60 s idle (returns to the Hub attract screen). Everything is stored in the browser only.
+* **Live-app links are hidden by default** so visitors cannot reach real data. Open `index.html?staff=1` once on a device to show them; `?staff=0` hides them again.
 
 ## What is inside
 * `index.html` – home: 9 app tiles (Take a tour / Open live app), Live / Testing / Coming soon register with summary, EN / ID / MS toggle, version top right above the toggle, "DEMO – sample data" ribbon.
