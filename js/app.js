@@ -1,5 +1,5 @@
 /* EcoOils Demo Hub - front door: tiles, language, tours, idle/attract mode. */
-const VERSION = "v1.6";
+const VERSION = "v1.7";
 /* STAFF mode: live-app links are hidden by default so visitors only reach sample-data demos.
    Open index.html?staff=1 once on a device to show them (e.g. for Iggy); ?staff=0 hides them again. */
 const _q = new URLSearchParams(location.search).get("staff");

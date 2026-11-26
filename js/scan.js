@@ -1,6 +1,6 @@
 /* EcoOils Demo Hub - "Scan to try": the tablet camera reads a printed QR (demo card, live-app QR, patrol checkpoint)
    and opens the matching sample-data demo. Nothing is sent anywhere; decoding happens on the device. */
-const SV = "v1.6";
+const SV = "v1.7";
 const $ = s => document.querySelector(s);
 const T = {
   title: ["Scan to try", "Pindai untuk mencoba", "Imbas untuk cuba"],
@@ -32,6 +32,8 @@ const PICKS = [
 function route(raw) {
   const s = String(raw || "").trim();
   let m = /^EOP-DEMO-CP(\d)$/.exec(s);
+  if (m) return "patroli.html?scan=" + m[1];
+  m = /patroli\.html\?scan=(\d)/.exec(s);
   if (m) return "patroli.html?scan=" + m[1];
   m = /demo\.html\?app=(uauc|gate|driver|track|walk)\b/.exec(s);
   if (m) return "demo.html?app=" + m[1];

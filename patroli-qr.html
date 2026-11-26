@@ -17,9 +17,11 @@
 </main>
 <script src="vendor/qrcode.js"></script>
 <script>
+const URLMODE = new URLSearchParams(location.search).get("mode") === "url"; /* ?mode=url: codes open the demo from any phone camera */
+const BASE = location.href.replace(/[^/]*([?#].*)?$/, "");
 const NAMES = ["Main Gate", "Tank Farm", "Boiler House", "Process Unit", "Warehouse", "Substation"];
 document.getElementById("grid").innerHTML = NAMES.map((n, i) => {
-  const q = qrcode(0, "M"); q.addData("EOP-DEMO-CP" + (i + 1)); q.make();
+  const q = qrcode(0, "M"); q.addData(URLMODE ? BASE + "patroli.html?scan=" + (i + 1) : "EOP-DEMO-CP" + (i + 1)); q.make();
   return `<div class="qrc"><div class="big">${i + 1}</div>${q.createSvgTag({ cellSize: 6, margin: 2, scalable: true })}<h3>${n}</h3><small>EOP-DEMO-CP${i + 1} · DEMO</small></div>`;
 }).join("");
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
