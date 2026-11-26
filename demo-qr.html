@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demo QR cards – EcoOils Demo Hub</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/patroli.css">
+</head>
+<body>
+<div class="ribbon">DEMO – sample data</div>
+<header class="top noprint"><a class="back" href="index.html">← Demo Hub</a><button class="btn yellow" onclick="window.print()">Print</button></header>
+<main class="pwrap">
+  <div class="ptitle"><h1>Demo QR cards</h1></div>
+  <p class="noprint" style="color:var(--muted)">Print on A4, matte, then laminate. Each code opens the sample-data demo directly (visitors can scan with their own phone). On the booth tablet use the <b>Scan to try</b> page. Contains only the demo address, no real data.</p>
+  <div class="qrgrid" id="grid"></div>
+</main>
+<script src="vendor/qrcode.js"></script>
+<script>
+const BASE = location.href.replace(/[^/]*([?#].*)?$/, "");
+const CARDS = [["Security Patrol", "patroli.html"], ["UA/UC Reporting", "demo.html?app=uauc"], ["Gate Pass", "demo.html?app=gate"],
+  ["Driver's Log", "demo.html?app=driver"], ["HSSE Tracker", "demo.html?app=track"], ["Walkthrough", "demo.html?app=walk"], ["Demo Hub (all apps)", "index.html"], ["Scan to try", "scan.html"]];
+document.getElementById("grid").innerHTML = CARDS.map((c, i) => {
+  const q = qrcode(0, "M"); q.addData(BASE + c[1]); q.make();
+  return `<div class="qrc"><div class="big">${i + 1}</div>${q.createSvgTag({ cellSize: 6, margin: 2, scalable: true })}<h3>${c[0]}</h3><small>DEMO · sample data</small></div>`;
+}).join("");
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Scan to try – EcoOils Demo Hub</title>
+<meta name="theme-color" content="#1b1b1d">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/patroli.css">
+<link rel="stylesheet" href="css/demos.css">
+<style>
+.scanwrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px;align-items:start}
+@media(max-width:820px){.scanwrap{grid-template-columns:1fr}}
+.vid{position:relative;background:#000;border:1px solid var(--line);border-radius:14px;overflow:hidden;aspect-ratio:4/3}
+.vid video{width:100%;height:100%;object-fit:cover;display:block}
+.vid .frame{position:absolute;inset:18% 18%;border:3px solid var(--yellow);border-radius:18px;box-shadow:0 0 0 999px rgba(0,0,0,.35);pointer-events:none}
+.vid .msg{position:absolute;left:0;right:0;bottom:0;padding:.7em 1em;background:rgba(0,0,0,.6);text-align:center;font-size:.9rem}
+.picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.picks .btn{width:100%;text-align:center}
+.hint{color:var(--muted);margin:.3em 0 1em}
+</style>
+</head>
+<body>
+<div class="ribbon" id="ribbon">DEMO – sample data</div>
+<header class="top">
+  <a class="back" href="index.html" id="back">← Demo Hub</a>
+  <div class="right">
+    <div class="ver" id="ver">v1.6</div>
+    <div class="lang" role="group" aria-label="Language"><button data-l="en">EN</button><button data-l="id">ID</button><button data-l="ms">MS</button></div>
+  </div>
+</header>
+<main class="pwrap">
+  <div class="ptitle"><h1 id="title"></h1><span class="demobadge">DEMO</span></div>
+  <p class="hint" id="hint"></p>
+  <div class="scanwrap">
+    <div>
+      <div class="vid" id="vid"><video id="v" playsinline muted></video><div class="frame"></div><div class="msg" id="msg"></div></div>
+      <div class="btns" style="margin-top:10px"><button class="btn yellow" id="bCam"></button></div>
+    </div>
+    <div>
+      <h3 id="pickT" style="margin:0 0 .6em"></h3>
+      <div class="picks" id="picks"></div>
+    </div>
+  </div>
+</main>
+<div class="toast" id="toast" role="status"></div>
+<script src="vendor/jsQR.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/scan.js"></script>
+</body>
+</html>

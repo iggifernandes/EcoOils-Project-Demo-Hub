@@ -1,5 +1,5 @@
 /* Patroli demo: guard view + supervisor dashboard. State lives in localStorage only. All data is sample data. */
-const PV = "v1.5";
+const PV = "v1.6";
 const KEY = "patroli.state.v1";
 const IDLE_MS = 60000;
 const CPS = [ // fictional plant layout; x,y are positions on the schematic (viewBox 600x360)
@@ -160,6 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
   $("#bStop").onclick = stopCam;
   ["pointerdown", "keydown", "touchstart"].forEach(ev => document.addEventListener(ev, bump, { passive: true }));
   bump(); render();
+  const _sc = new URLSearchParams(location.search).get("scan"); if (_sc && CPS[_sc - 1]) { scan(+_sc); history.replaceState(null, "", "patroli.html"); }
   window.addEventListener("storage", e => { if (e.key === KEY) { try { S = JSON.parse(e.newValue) || fresh(); } catch (x) {} render(); } });
   if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
 });

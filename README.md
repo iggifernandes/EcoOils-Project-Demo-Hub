@@ -43,3 +43,10 @@ Uses `BarcodeDetector` + `getUserMedia` (Chrome / Edge on Android and desktop; n
 * Test every "Open live app" link; if one is not ready, point it elsewhere in `URLS`.
 * Print `patroli-qr.html` (6 codes) and test one camera scan.
 * Language toggle set to the audience (EN / ID / MS); tap Reset demo before the first visitor.
+
+## v1.6 – Scan to try
+• `scan.html` (button on the hub hero): the tablet camera reads a printed QR and opens the matching sample-data demo. Decoding runs on the device (vendored jsQR), nothing is sent anywhere.
+• Recognised codes: Patroli checkpoints (`EOP-DEMO-CP1…6` → patrol demo, checkpoint scanned), the live-app QR codes from the banners (opens that app's demo or tour), and demo links from `demo-qr.html`.
+• `demo-qr.html`: print-ready sheet of 8 demo QR cards (matte, laminate). Visitors can also scan them with their own phone.
+• Can't scan? Pick-a-demo buttons sit beside the camera. 60 s idle returns to the attract screen.
+• `index.html?tour=<id>` opens a guided tour directly; `patroli.html?scan=N` scans checkpoint N.

@@ -24,6 +24,7 @@ const UI = {
   secSoon: ["Coming online", "Segera online", "Akan datang dalam talian"],
   sec_live: ["Live", "Aktif", "Aktif"], sec_testing: ["Testing phase", "Fase pengujian", "Fasa ujian"], sec_soon: ["Coming soon", "Segera hadir", "Akan datang"],
   hsseOnly: ["HSSE only", "Hanya HSSE", "HSSE sahaja"], liveTesting: ["Live, testing phase", "Aktif, fase pengujian", "Aktif, fasa ujian"],
+  scanTry: ["Scan to try", "Pindai untuk mencoba", "Imbas untuk cuba"],
   tryDemo: ["Try the demo", "Coba demo", "Cuba demo"], demoTag: ["Demo", "Demo", "Demo"], secTours: ["Take a tour", "Ikuti tur", "Ikuti lawatan"],
   st_soon: ["Coming soon", "Segera hadir", "Akan datang"],
   secAll: ["All digital HSSE processes", "Semua proses HSSE digital", "Semua proses HSSE digital"],
